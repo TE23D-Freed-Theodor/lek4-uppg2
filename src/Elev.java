@@ -6,6 +6,8 @@ public class Elev {
     String klassNamn;
     String program;
 
+    public static int antal_elever = 0;
+
     public Elev(String namn, String personnummer, String email, String mobilnummer, String klassNamn, String program) {
         this.namn = namn;
         this.personnummer = personnummer;
@@ -13,6 +15,7 @@ public class Elev {
         this.mobilnummer = mobilnummer;
         this.klassNamn = klassNamn;
         this.program = program;
+        this.antal_elever++;
     }
 
     public void printElev() {

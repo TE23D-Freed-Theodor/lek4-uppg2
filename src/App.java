@@ -5,7 +5,6 @@ public class App {
         Scanner scanner = new Scanner(System.in);
 
         Elev[] elever = new Elev[100];
-        int antal_elever = 0;
 
         while (true) {
             System.out.println("1. Lägg till elev");
@@ -18,7 +17,7 @@ public class App {
             if (val == 1) {
                 scanner.nextLine();
 
-                if (antal_elever >= 100) {
+                if (Elev.antal_elever >= 100) {
                     System.out.println("Max antal elever är nått!");
                     continue;
                 } else {
@@ -41,14 +40,14 @@ public class App {
                     System.out.println("Skriv elevens program");
                     String program = scanner.nextLine();
 
-                    elever[antal_elever] = new Elev(namn, personnummer, email, mobilnummer, klassnamn, program);
-                    antal_elever++;
+                    int index = Elev.antal_elever;
+                    elever[index] = new Elev(namn, personnummer, email, mobilnummer, klassnamn, program);
                 }
             } else if (val == 2) {
-                if (antal_elever == 0) {
+                if (Elev.antal_elever == 0) {
                     System.out.println("Inga registrerade elever");
                 } else {
-                    for (int x = 0; x < antal_elever; x++) {
+                    for (int x = 0; x < Elev.antal_elever; x++) {
                         System.out.println(elever[x].namn);
                     }
                 }
@@ -59,7 +58,7 @@ public class App {
                 String hittaNamn = scanner.nextLine();
                 boolean hittad = false;
 
-                for (int i = 0; i < antal_elever; i++) {
+                for (int i = 0; i < Elev.antal_elever; i++) {
                     if (elever[i].namn.equals(hittaNamn)) {
                         System.out.println("Elev hittad! Elevens information: ");
                         System.out.println("Namn: " + elever[i].namn);
@@ -71,10 +70,9 @@ public class App {
                         hittad = true;
                         break;
                     }
-
-                    if (!hittad) {
-                        System.out.println("Vi hittade inte eleven.");
-                    }
+                }
+                if (!hittad) {
+                    System.out.println("Vi hittade inte eleven.");
                 }
             } else {
                 System.out.println("Nu blev det fel här lol");
